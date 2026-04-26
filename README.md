@@ -76,7 +76,7 @@ curl -s http://127.0.0.1:9119/api/dashboard/plugins/rescan
 
 ## Customization
 
-The theme is a single YAML file. All aesthetic logic lives in `customCSS`. Key values you might want to tweak:
+The theme is a single YAML file, and all aesthetic logic lives in `customCSS`. Key values you might want to tweak:
 
 - **Scanline opacity** - Search for `rgba(51, 255, 0, 0.04)` in the scanlines block and adjust the alpha
 - **Glow intensity** - Modify the `text-shadow` values in the phosphor glow section
@@ -91,4 +91,4 @@ MIT | Do whatever you want. If you make it better, send a PR, thanks!
 
 ---
 
-*Built with phosphor and spite by [@TabooHarmony](https://github.com/TabooHarmony) for the Hermes community.*
+*Built by [@TabooHarmony](https://github.com/TabooHarmony) for the Hermes community.*
