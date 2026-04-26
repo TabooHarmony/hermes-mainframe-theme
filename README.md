@@ -4,17 +4,9 @@ A phosphor-green CRT dashboard theme for [Hermes Agent](https://github.com/NousR
 
 ![Mainframe Preview](assets/preview.gif)
 
-> *"Every UI element breathes like a living mainframe."*
-
-The GIF above shows the full CRT animation suite: drifting scanlines, phosphor glow pulses, cursor blink, and hover bloom. This is not a static theme.
-
-For the full experience, check out the [5-second promo video](assets/promo.mp4) (1920x1080, H.264).
-
 ---
 
-## What is this?
-
-**Mainframe** transforms the Hermes Agent web dashboard into a retro-futuristic terminal. It is not flat minimalism. It is not a subtle accent swap. It is a complete aesthetic overhaul: phosphor green on space black, CRT scanlines, monospace typography, and idle animations that make the interface feel like cold 1970s hardware that happens to be omniscient.
+**Mainframe** transforms the Hermes Agent web dashboard into an animated retro-futuristic terminal. This is not a subtle accent swap, it goes the extra mile to be large visual overhaul: phosphor green on space black, CRT scanlines, monospace typography, and animations that makes your interface feel like living 1970s hardware.
 
 Built for the [Hermes Dashboard Theme Hackathon](https://x.com/Teknium/status/2047941621358928157).
 
@@ -22,9 +14,9 @@ Built for the [Hermes Dashboard Theme Hackathon](https://x.com/Teknium/status/20
 
 ## Features
 
-### The CRT Animation Suite
+### The CRT Animations
 
-The interface is alive. Every animation is subtle enough to not distract, present enough to notice:
+The interface is alive! Every animation is subtle enough to not distract, but present enough to notice:
 
 | Effect | What it does | Interval |
 |--------|-------------|----------|
@@ -43,23 +35,15 @@ The interface is alive. Every animation is subtle enough to not distract, presen
 - **Table Row Hover** - Rows light up with a subtle green wash
 - **Phosphor Selection** - Text selection is green-tinted with glow
 
-### Typography
-
-**VT323** from Google Fonts renders every piece of text in pure terminal monospace. The design system hard-codes its own display font, but Mainframe forces the theme font everywhere via CSS override.
-
 ### Color Palette
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| Background | `#000800` | Deepest canvas - barely green-tinted black |
+| Background | `#000800` | Backdrop and accent color |
 | Midground | `#33ff00` | Primary text, borders, phosphor glow |
 | Accent | `#00e5ff` | Secondary highlights, chart output bars |
 | Warning | `#ffb000` | Alerts that need to stand out |
 | Warm Glow | `rgba(51, 255, 0, 0.08)` | Subtle green vignette |
-
-### Themed Charts
-
-The Analytics page charts are recolored to match the terminal aesthetic. Input bars render in phosphor green. Output bars render in cyan. No more cream/white and emerald green clash.
 
 ---
 
@@ -90,19 +74,6 @@ curl -s http://127.0.0.1:9119/api/dashboard/plugins/rescan
 
 ---
 
-## File Structure
-
-```
-.
-├── mainframe.yaml      # The theme definition
-├── assets/
-│   └── preview.gif      # Animated dashboard preview
-│   └── screenshot.png   # Static dashboard preview
-└── README.md           # This file
-```
-
----
-
 ## Customization
 
 The theme is a single YAML file. All aesthetic logic lives in `customCSS`. Key values you might want to tweak:
@@ -116,7 +87,7 @@ The theme is a single YAML file. All aesthetic logic lives in `customCSS`. Key v
 
 ## License
 
-MIT - Do whatever you want. If you make it better, send a PR.
+MIT | Do whatever you want. If you make it better, send a PR, thanks!
 
 ---
 
