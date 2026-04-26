@@ -2,9 +2,11 @@
 
 A phosphor-green CRT dashboard theme for [Hermes Agent](https://github.com/NousResearch/hermes-agent).
 
-![Mainframe Screenshot](assets/screenshot.png)
+![Mainframe Preview](assets/preview.gif)
 
 > *"Every UI element breathes like a living mainframe."*
+
+The GIF above shows the full CRT animation suite: drifting scanlines, phosphor glow pulses, cursor blink, and hover bloom. This is not a static theme.
 
 ---
 
@@ -92,7 +94,8 @@ curl -s http://127.0.0.1:9119/api/dashboard/plugins/rescan
 .
 ├── mainframe.yaml      # The theme definition
 ├── assets/
-│   └── screenshot.png  # Dashboard preview
+│   └── preview.gif      # Animated dashboard preview
+│   └── screenshot.png   # Static dashboard preview
 └── README.md           # This file
 ```
 
