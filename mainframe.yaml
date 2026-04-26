@@ -1,0 +1,290 @@
+# Hyperion Mainframe — Hermes dashboard theme
+#
+# A pure retro-tech divinity aesthetic. Phosphor green on space black.
+# Every UI element is monospace. CRT scanlines, phosphor glow, and the
+# cold precision of a 1970s mainframe that happens to be omniscient.
+#
+# Drop this file into ~/.hermes/dashboard-themes/ and restart the web UI
+# (or hit /api/dashboard/plugins/rescan).
+
+name: mainframe
+label: "Mainframe"
+description: "Phosphor-green CRT - retro telemetry"
+
+# ------- palette -------
+palette:
+  background: "#000800"
+  midground: "#33ff00"
+  foreground:
+    hex: "#ffffff"
+    alpha: 0
+  warmGlow: "rgba(51, 255, 0, 0.08)"
+  noiseOpacity: 0.5
+
+# ------- typography -------
+typography:
+  fontSans: '"VT323", "Share Tech Mono", "JetBrains Mono", ui-monospace, monospace'
+  fontMono: '"VT323", "Share Tech Mono", "JetBrains Mono", ui-monospace, monospace'
+  fontDisplay: '"VT323", "Share Tech Mono", monospace'
+  fontUrl: "https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;700&display=swap"
+  baseSize: "15px"
+  lineHeight: "1.4"
+  letterSpacing: "0.02em"
+
+# ------- layout -------
+layout:
+  radius: "0"
+  density: "compact"
+
+layoutVariant: standard
+
+# ------- color overrides -------
+colorOverrides:
+  primary: "#33ff00"
+  primaryForeground: "#000800"
+  accent: "#00e5ff"
+  accentForeground: "#000800"
+  secondary: "#0a120a"
+  secondaryForeground: "#33ff00"
+  muted: "#020802"
+  mutedForeground: "#1a801a"
+  warning: "#ffb000"
+  destructive: "#ff3333"
+  success: "#33ff00"
+  ring: "#33ff00"
+  border: "rgba(51, 255, 0, 0.22)"
+  card: "#000800"
+  cardForeground: "#33ff00"
+
+# ------- component chrome -------
+componentStyles:
+  card:
+    background: "#000800"
+    boxShadow: "inset 0 0 0 1px rgba(51, 255, 0, 0.18), 0 0 12px -4px rgba(51, 255, 0, 0.08)"
+  header:
+    background: "#000800"
+    borderBottom: "1px solid rgba(51, 255, 0, 0.22)"
+    boxShadow: "0 0 16px -4px rgba(51, 255, 0, 0.08)"
+  tab:
+    border: "1px solid rgba(51, 255, 0, 0.15)"
+    background: "transparent"
+
+# ------- customCSS -------
+customCSS: |
+  /* ═══════════════════════════════════════════════════════════════
+     HYPERION MAINFRAME  —  CRT idle animation suite
+     Everything pulses, glows, and breathes like a living mainframe.
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* ── 1. ANIMATED SCANLINES (subtle drift + jitter) ── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(51, 255, 0, 0.04) 2px,
+      rgba(51, 255, 0, 0.04) 3px
+    );
+    mix-blend-mode: screen;
+    animation: hyperion-scanline-drift 8s linear infinite;
+  }
+
+  @keyframes hyperion-scanline-drift {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(3px); }
+  }
+
+  /* ── 2. RARE CRT FLICKER (viewport-wide, 12s interval) ── */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 101;
+    background: rgba(51, 255, 0, 0);
+    mix-blend-mode: overlay;
+    animation: hyperion-crt-flicker 12s step-end infinite;
+  }
+
+  @keyframes hyperion-crt-flicker {
+    0%, 93%, 96%, 98%, 100% { opacity: 0; }
+    94%                 { opacity: 0.06; background: rgba(51,255,0,0.08); }
+    97%                 { opacity: 0.04; background: rgba(255,255,255,0.04); }
+    99%                 { opacity: 0.03; background: rgba(51,255,0,0.05); }
+  }
+
+  /* ── 3. RARE CRT ROLL BAR (horizontal brightness band sweep) ── */
+  @keyframes hyperion-rollbar {
+    0%   { top: -5%; opacity: 0; }
+    10%  { opacity: 0.06; }
+    90%  { opacity: 0.06; }
+    100% { top: 105%; opacity: 0; }
+  }
+  body {
+    position: relative;
+  }
+  html::before {
+    content: "";
+    position: fixed;
+    left: 0; right: 0;
+    height: 6px;
+    background: rgba(51, 255, 0, 0.22);
+    box-shadow: 0 0 20px rgba(51, 255, 0, 0.35), 0 0 40px rgba(51, 255, 0, 0.15);
+    pointer-events: none;
+    z-index: 102;
+    animation: hyperion-rollbar 18s linear infinite;
+    animation-delay: 7s;
+  }
+
+  /* ── 4. PHOSPHOR GLOW ON ALL HEADINGS / BOLD ── */
+  h1, h2, h3, h4, h5, h6,
+  [class*="font-bold"],
+  [class*="font-expanded"] {
+    text-shadow:
+      0 0 2px rgba(51, 255, 0, 0.40),
+      0 0 8px rgba(51, 255, 0, 0.15);
+  }
+
+  /* ── 5. CURSOR BLINK ON PAGE TITLES ── */
+  h1::after {
+    content: "_";
+    display: inline;
+    animation: hyperion-blink 1.1s step-end infinite;
+    color: #33ff00;
+    margin-left: 2px;
+  }
+  @keyframes hyperion-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+
+  /* ── 6. FONT OVERRIDE (mondwest → VT323) ── */
+  .font-mondwest {
+    font-family: var(--theme-font-sans) !important;
+  }
+
+  /* ── 7. ACCENT COLOR OVERRIDE (cyan diamond → green) ──
+     The dashboard renders inside a closed shadow DOM. Only inherited
+     CSS custom properties pierce the boundary. We force --color-accent
+     with !important so it overrides any shadow-internal declaration.
+  ── */
+  :root, html, body, #root, #app {
+    --color-accent: #33ff00 !important;
+  }
+
+  /* ── 8. CARD HOVER BLOOM (phosphor intensifies on hover) ── */
+  [class*="bg-card"],
+  [class*="rounded-lg"] {
+    transition:
+      box-shadow 0.35s ease,
+      border-color 0.35s ease,
+      transform 0.25s ease !important;
+  }
+  [class*="bg-card"]:hover,
+  [class*="rounded-lg"]:hover {
+    box-shadow:
+      inset 0 0 0 1px rgba(51, 255, 0, 0.45),
+      0 0 24px -4px rgba(51, 255, 0, 0.25),
+      0 0 48px -8px rgba(51, 255, 0, 0.10) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ── 9. ACTIVE NAV TAB PULSE ── */
+  a[aria-current="page"],
+  [data-active="true"] {
+    animation: hyperion-nav-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes hyperion-nav-pulse {
+    0%, 100% {
+      text-shadow: 0 0 4px rgba(51, 255, 0, 0.3), 0 0 12px rgba(51, 255, 0, 0.1);
+      box-shadow: inset 2px 0 0 0 rgba(51, 255, 0, 0.5), 0 0 8px -2px rgba(51, 255, 0, 0.15);
+    }
+    50% {
+      text-shadow: 0 0 8px rgba(51, 255, 0, 0.6), 0 0 20px rgba(51, 255, 0, 0.25);
+      box-shadow: inset 2px 0 0 0 rgba(51, 255, 0, 0.9), 0 0 16px -2px rgba(51, 255, 0, 0.35);
+    }
+  }
+
+  /* ── 10. NAV LINK HOVER GLOW ── */
+  nav a {
+    transition: text-shadow 0.2s ease, color 0.2s ease;
+  }
+  nav a:hover {
+    text-shadow: 0 0 6px rgba(51, 255, 0, 0.5), 0 0 14px rgba(51, 255, 0, 0.2);
+    color: #66ff33 !important;
+  }
+
+  /* ── 11. STATUS HEARTBEAT (RUNNING, ONLINE, etc.) ── */
+  @keyframes hyperion-heartbeat {
+    0%, 100% { opacity: 1; text-shadow: 0 0 4px rgba(51, 255, 0, 0.3); }
+    14%      { opacity: 0.7; text-shadow: 0 0 2px rgba(51, 255, 0, 0.1); }
+    28%      { opacity: 1; text-shadow: 0 0 6px rgba(51, 255, 0, 0.5); }
+    42%      { opacity: 0.8; text-shadow: 0 0 3px rgba(51, 255, 0, 0.2); }
+    70%      { opacity: 1; text-shadow: 0 0 4px rgba(51, 255, 0, 0.3); }
+  }
+  /* Target status text that contains RUNNING or is bright green */
+  p, span, div {
+    transition: text-shadow 0.2s ease;
+  }
+  *:hover {
+    /* Subtle phosphor trail on ANY hovered text */
+    text-shadow: 0 0 3px rgba(51, 255, 0, 0.15);
+  }
+
+  /* ── 12. CHART COLOR OVERRIDES ── */
+  [class*="bg-[#ffe6cb]"] {
+    background-color: rgba(51, 255, 0, 0.45) !important;
+    transition: background-color 0.3s ease;
+  }
+  [class*="bg-emerald-500"] {
+    background-color: rgba(0, 229, 255, 0.45) !important;
+    transition: background-color 0.3s ease;
+  }
+  [class*="bg-[#ffe6cb]"]:hover,
+  [class*="bg-emerald-500"]:hover {
+    filter: brightness(1.3);
+  }
+
+  /* ── 13. SCROLLBAR — thin phosphor rail ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #000800; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(51, 255, 0, 0.30);
+    border: 1px solid #000800;
+    transition: background 0.2s ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(51, 255, 0, 0.70);
+    box-shadow: 0 0 8px rgba(51, 255, 0, 0.3);
+  }
+
+  /* ── 14. BUTTON HOVER INTENSIFY ── */
+  button {
+    transition: box-shadow 0.25s ease, transform 0.15s ease;
+  }
+  button:hover {
+    box-shadow: 0 0 12px -2px rgba(51, 255, 0, 0.25);
+  }
+  button:active {
+    transform: scale(0.98);
+  }
+
+  /* ── 15. SELECTION — phosphor burn ── */
+  ::selection {
+    background: rgba(51, 255, 0, 0.35);
+    color: #ccffcc;
+    text-shadow: 0 0 6px rgba(51, 255, 0, 0.6);
+  }
+
+  /* ── 16. TABLE ROW HOVER ── */
+  tr {
+    transition: background-color 0.2s ease;
+  }
+  tr:hover {
+    background-color: rgba(51, 255, 0, 0.04) !important;
+  }
