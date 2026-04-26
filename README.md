@@ -8,6 +8,8 @@ A phosphor-green CRT dashboard theme for [Hermes Agent](https://github.com/NousR
 
 The GIF above shows the full CRT animation suite: drifting scanlines, phosphor glow pulses, cursor blink, and hover bloom. This is not a static theme.
 
+For the full experience, check out the [5-second promo video](assets/promo.mp4) (1920x1080, H.264).
+
 ---
 
 ## What is this?
